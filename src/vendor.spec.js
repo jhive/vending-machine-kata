@@ -49,6 +49,12 @@ describe('kata.js', function () {
       vendor.dispense('gum').should.equal('Inserted quarter\nDispensing gum\nDone.');
     });
 
+    it('should NOT dispense a twinkie when the shopper doesn\'t have enough quarters and asks for twinkies', function(){
+      vendor.insert('quarter');
+      vendor.insert('quarter');
+      vendor.dispense('twinkie').should.equal('Inserted quarter\nInserted quarter\nDone.');
+    });
+
     it('should dispense a twinkie when the shopper enters three quarters and asks for twinkies', function(){
       vendor.insert('quarter')
       vendor.insert('quarter')

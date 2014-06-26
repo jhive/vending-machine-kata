@@ -1,12 +1,19 @@
 var actions = [],
     numberOfQuartersInserted = 0;
 
+// name
+// price
+// functionToPurchase
+
+
 var inventory = [
   {
-    product: 'gum'
+    product: 'gum',
+    price: 1
   },
   {
-    product: 'twinkie'
+    product: 'twinkie',
+    price: 3
   }
 ];
 
@@ -49,7 +56,7 @@ function processQuarterForGum(){
 }
 
 function processQuartersForTwinkie(){
-  if(numberOfQuartersInserted >= 1){
+  if(numberOfQuartersInserted >= 3){
     actions.push('Dispensing twinkie');
   }
 }
