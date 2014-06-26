@@ -1,11 +1,6 @@
 var actions = [],
     numberOfQuartersInserted = 0;
 
-// name
-// price
-// functionToPurchase
-
-
 var inventory = [
   {
     product: 'gum',
@@ -38,10 +33,10 @@ function getNumberOfQuartersInserted(){
 
 function dispense(productToDispense){
   if(productToDispense === 'gum'){
-    processQuarterForGum();
+    purchaseProduct(0);
   }
   if(productToDispense === 'twinkie'){
-    processQuartersForTwinkie();
+    purchaseProduct(1);
   }
 
   finishVending();
@@ -49,15 +44,9 @@ function dispense(productToDispense){
   return processActions();
 }
 
-function processQuarterForGum(){
-  if(numberOfQuartersInserted >= inventory[0].price){
-    actions.push('Dispensing gum');
-  }
-}
-
-function processQuartersForTwinkie(){
-  if(numberOfQuartersInserted >= inventory[1].price){
-    actions.push('Dispensing twinkie');
+function purchaseProduct(inventoryIndex){
+  if(numberOfQuartersInserted >= inventory[inventoryIndex].price){
+    actions.push('Dispensing ' + inventory[inventoryIndex].product);
   }
 }
 
