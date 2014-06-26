@@ -9,6 +9,15 @@ describe('kata.js', function () {
       lines[0].should.equal('Inserted quarter');
     });
 
+    it('should have an initial balance of zero quarters', function(){
+      vendor.getNumberOfQuartersInserted().should.equal(0);
+    });
+
+    it('should have a balance of one quarter after inserting a quarter', function(){
+      vendor.insert('quarter');
+      vendor.getNumberOfQuartersInserted().should.equal(1);
+    });
+
     it("should dispense nothing if it doesn't see any quarters", function(){
       vendor.insert('sticky thing').should.equal('Inserted sticky thing\nDone.');
     });

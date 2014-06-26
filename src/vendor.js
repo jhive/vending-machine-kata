@@ -1,4 +1,5 @@
 var actions = [],
+
 inventory = [
     {
       product: 'gum'
@@ -12,6 +13,10 @@ function insert(coin){
   coin = coin.toLowerCase();
   actions.push("Inserted " + coin);
   return dispense(coin);
+}
+
+function getNumberOfQuartersInserted(){
+  return 0;
 }
 
 function dispense(coin){
@@ -40,5 +45,6 @@ function processActions(){
 
 module.exports = {
   inventory: inventory,
-  insert: insert
+  insert: insert,
+  getNumberOfQuartersInserted:getNumberOfQuartersInserted
 };
