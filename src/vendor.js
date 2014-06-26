@@ -1,22 +1,26 @@
 var actions = [],
+    numberOfQuartersInserted = 0;
 
-inventory = [
-    {
-      product: 'gum'
-    },
-    {
-      product: 'twinkies'
-    }
+var inventory = [
+  {
+    product: 'gum'
+  },
+  {
+    product: 'twinkies'
+  }
 ];
 
 function insert(coin){
   coin = coin.toLowerCase();
   actions.push("Inserted " + coin);
+  if( coin === 'quarter' ) {
+    numberOfQuartersInserted++;
+  }
   return dispense(coin);
 }
 
 function getNumberOfQuartersInserted(){
-  return 0;
+  return numberOfQuartersInserted;
 }
 
 function dispense(coin){
@@ -43,8 +47,14 @@ function processActions(){
   return output;
 }
 
+function initializeMachine(){
+  actions = [];
+  numberOfQuartersInserted = 0;
+}
+
 module.exports = {
   inventory: inventory,
   insert: insert,
-  getNumberOfQuartersInserted:getNumberOfQuartersInserted
+  getNumberOfQuartersInserted:getNumberOfQuartersInserted,
+  initializeMachine: initializeMachine
 };

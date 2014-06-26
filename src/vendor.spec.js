@@ -2,6 +2,19 @@ var should = require('chai').should(),
     vendor = require('./vendor.js');
 
 describe('kata.js', function () {
+
+  beforeEach(function () {
+    vendor.initializeMachine();
+  });
+
+  describe('Intializing a machine', function () {
+    it('should have an initial balance of zero quarters', function(){
+      vendor.insert("quarter");
+      vendor.initializeMachine();
+      vendor.getNumberOfQuartersInserted().should.equal(0);
+    });
+   });
+
   describe('Inserting things', function () {
     it('should recognize when the shopper has inserted a quarter ', function(){
       output = vendor.insert('quarter');
@@ -9,9 +22,6 @@ describe('kata.js', function () {
       lines[0].should.equal('Inserted quarter');
     });
 
-    it('should have an initial balance of zero quarters', function(){
-      vendor.getNumberOfQuartersInserted().should.equal(0);
-    });
 
     it('should have a balance of one quarter after inserting a quarter', function(){
       vendor.insert('quarter');
