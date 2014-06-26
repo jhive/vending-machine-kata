@@ -50,13 +50,13 @@ function dispense(productToDispense){
 }
 
 function processQuarterForGum(){
-  if(numberOfQuartersInserted >= 1){
+  if(numberOfQuartersInserted >= inventory[0].price){
     actions.push('Dispensing gum');
   }
 }
 
 function processQuartersForTwinkie(){
-  if(numberOfQuartersInserted >= 3){
+  if(numberOfQuartersInserted >= inventory[1].price){
     actions.push('Dispensing twinkie');
   }
 }
@@ -69,10 +69,14 @@ function finishVending(){
 
 function processActions(){
   var output = actions.join('\n');
-  // actions = [];
+  if(actionsArrayContainsDone()){
+    actions = [];
+  }
   return output;
 }
-
+function actionsArrayContainsDone(){
+  return actions[actions.length-1] === 'Done.';
+}
 function initializeMachine(){
   actions = [];
   numberOfQuartersInserted = 0;

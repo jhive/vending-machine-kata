@@ -12,7 +12,7 @@ var inquire = function(message){
     choices: vendor.inventory.map(function(item){
       return {
         name: "Buy " + item.product,
-        value: vendor.insert.bind(null, item.product)
+        value: vendor.dispense.bind(null, item.product)
       };
     }).concat({
       name: 'Insert quarter',

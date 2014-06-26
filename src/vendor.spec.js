@@ -62,6 +62,11 @@ describe('kata.js', function () {
       vendor.dispense('twinkie').should.equal('Inserted quarter\nInserted quarter\nInserted quarter\nDispensing twinkie\nDone.')
     });
 
+    it('should clear the screen after seing the word Done. on the next action', function(){
+      vendor.insert('quarter');
+      vendor.dispense('gum');
+      vendor.insert('quarter').should.equal('Inserted quarter');
+    });
 
   });
 
