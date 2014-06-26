@@ -28,16 +28,27 @@ describe('kata.js', function () {
       vendor.getNumberOfQuartersInserted().should.equal(1);
     });
 
+    it('should keep track of the balance of multiple quarters', function(){
+      vendor.insert('not a quarter');
+      vendor.insert('quarter');
+      vendor.insert('quarter');
+
+      vendor.getNumberOfQuartersInserted().should.equal(2);
+    });
+
     it("should dispense nothing if it doesn't see any quarters", function(){
       vendor.insert('sticky thing').should.equal('Inserted sticky thing\nDone.');
     });
 
   });
-  describe('Purchasing gum', function () {
+
+  describe('Purchasing things', function () {
 
     it('should dispense gum when the shopper has inserted a quarter', function(){
       vendor.insert('quarter').should.equal('Inserted quarter\nDispensing gum\nDone.');
     });
+
+
   });
 
   describe('View inventory', function () {

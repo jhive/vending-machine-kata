@@ -13,9 +13,6 @@ var inventory = [
 function insert(coin){
   coin = coin.toLowerCase();
   actions.push("Inserted " + coin);
-  if( coin === 'quarter' ) {
-    numberOfQuartersInserted++;
-  }
   return dispense(coin);
 }
 
@@ -33,6 +30,7 @@ function dispense(coin){
 
 function processQuarterForGum(coin){
   if( coin === 'quarter' ) {
+    numberOfQuartersInserted++;
     actions.push('Dispensing gum');
   }
 }
