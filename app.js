@@ -2,7 +2,7 @@ var vendor = require('./src/vendor'),
     inquirer = require('inquirer');
 
 var inquire = function(message){
-  console.reset();
+  clear();
 
   console.log(message);
 
@@ -20,9 +20,9 @@ function handleInput(data){
   inquire(vendor.vend(data.input));
 }
 
-console.reset = function () {
+function clear() {
   return process.stdout.write('\033c');
 };
 
-console.reset();
+clear();
 inquire("Waiting on input..");
