@@ -44,9 +44,16 @@ describe('kata.js', function () {
 
   describe('Purchasing things', function () {
 
-    it('should dispense gum when the shopper has inserted a quarter', function(){
+    it('should dispense gum when the shopper has inserted a quarter and asked for gum', function(){
       vendor.insert('quarter')
       vendor.dispense('gum').should.equal('Inserted quarter\nDispensing gum\nDone.');
+    });
+
+    it('should dispense a twinkie when the shopper enters three quarters and asks for twinkies', function(){
+      vendor.insert('quarter')
+      vendor.insert('quarter')
+      vendor.insert('quarter')
+      vendor.dispense('twinkie').should.equal('Inserted quarter\nInserted quarter\nInserted quarter\nDispensing twinkie\nDone.')
     });
 
 
@@ -59,7 +66,7 @@ describe('kata.js', function () {
     });
 
     it("should have twinkies in inventory", function(){
-      productExists(vendor.inventory, 'twinkies').should.be.true;
+      productExists(vendor.inventory, 'twinkie').should.be.true;
     });
 
     it("should give a string with a list of all products", function(){

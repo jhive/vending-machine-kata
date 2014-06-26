@@ -6,19 +6,23 @@ var inventory = [
     product: 'gum'
   },
   {
-    product: 'twinkies'
+    product: 'twinkie'
   }
 ];
 
 function insert(coin){
   coin = coin.toLowerCase();
 
-  if( coin === 'quarter' ) {
-    numberOfQuartersInserted++;
-  }
+  incrementQuartersIfValidCoinInserted(coin);
 
   actions.push("Inserted " + coin);
   return processActions();
+}
+
+function incrementQuartersIfValidCoinInserted(coin){
+  if( coin === 'quarter' ) {
+    numberOfQuartersInserted++;
+  }
 }
 
 function getNumberOfQuartersInserted(){
@@ -29,17 +33,27 @@ function dispense(productToDispense){
   if(productToDispense === 'gum'){
     processQuarterForGum();
   }
+  if(productToDispense === 'twinkie'){
+    processQuartersForTwinkie();
+  }
 
   finishVending();
 
   return processActions();
 }
 
-function processQuarterForGum(coin){
+function processQuarterForGum(){
   if(numberOfQuartersInserted >= 1){
     actions.push('Dispensing gum');
   }
 }
+
+function processQuartersForTwinkie(){
+  if(numberOfQuartersInserted >= 1){
+    actions.push('Dispensing twinkie');
+  }
+}
+
 
 function finishVending(){
   actions.push("Done.");
