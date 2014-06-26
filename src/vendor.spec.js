@@ -37,7 +37,7 @@ describe('kata.js', function () {
     });
 
     it("should dispense nothing if it doesn't see any quarters", function(){
-      vendor.insert('sticky thing').should.equal('Inserted sticky thing\nDone.');
+      vendor.insert('sticky thing').should.equal('Inserted sticky thing');
     });
 
   });
@@ -45,7 +45,8 @@ describe('kata.js', function () {
   describe('Purchasing things', function () {
 
     it('should dispense gum when the shopper has inserted a quarter', function(){
-      vendor.insert('quarter').should.equal('Inserted quarter\nDispensing gum\nDone.');
+      vendor.insert('quarter')
+      vendor.dispense('gum').should.equal('Inserted quarter\nDispensing gum\nDone.');
     });
 
 

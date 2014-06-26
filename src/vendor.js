@@ -12,16 +12,23 @@ var inventory = [
 
 function insert(coin){
   coin = coin.toLowerCase();
+
+  if( coin === 'quarter' ) {
+    numberOfQuartersInserted++;
+  }
+
   actions.push("Inserted " + coin);
-  return dispense(coin);
+  return processActions();
 }
 
 function getNumberOfQuartersInserted(){
   return numberOfQuartersInserted;
 }
 
-function dispense(coin){
-  processQuarterForGum(coin);
+function dispense(productToDispense){
+  if(productToDispense === 'gum'){
+    processQuarterForGum();
+  }
 
   finishVending();
 
@@ -29,19 +36,19 @@ function dispense(coin){
 }
 
 function processQuarterForGum(coin){
-  if( coin === 'quarter' ) {
-    numberOfQuartersInserted++;
+  if(numberOfQuartersInserted >= 1){
     actions.push('Dispensing gum');
   }
 }
 
 function finishVending(){
   actions.push("Done.");
+
 }
 
 function processActions(){
   var output = actions.join('\n');
-  actions = [];
+  // actions = [];
   return output;
 }
 
@@ -54,5 +61,6 @@ module.exports = {
   inventory: inventory,
   insert: insert,
   getNumberOfQuartersInserted:getNumberOfQuartersInserted,
-  initializeMachine: initializeMachine
+  initializeMachine: initializeMachine,
+  dispense:dispense
 };
