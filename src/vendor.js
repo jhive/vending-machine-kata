@@ -7,13 +7,6 @@ inventory = [
       product: 'twinkies'
     }
 ];
-function getCoinFromAction(action) {
-  return action.split(' ').splice(1).join(' ');
-}
-
-function vend(action){
-  return insert(getCoinFromAction(action));
-}
 
 function insert(coin){
   coin = coin.toLowerCase();
@@ -47,6 +40,5 @@ function processActions(){
 
 module.exports = {
   inventory: inventory,
-  insert: insert,
-  vend: vend
+  insert: insert
 };

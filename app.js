@@ -10,14 +10,20 @@ var inquire = function(message){
     name: 'input',
     type: 'list',
     choices: vendor.inventory.map(function(item){
-      return "Buy " + item.product;
-    }).concat('Insert quarter'),
+      return {
+        name: "Buy " + item.product,
+        value: vendor.insert.bind(null, item.product)
+      };
+    }).concat({
+      name: 'Insert quarter',
+      value: vendor.insert.bind(null, 'quarter')
+    }),
     message: 'What do you want to do: '
   }], handleInput);
 };
 
 function handleInput(data){
-  inquire(vendor.vend(data.input));
+  inquire(data.input());
 }
 
 function clear() {

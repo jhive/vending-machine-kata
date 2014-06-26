@@ -2,19 +2,22 @@ var should = require('chai').should(),
     vendor = require('./vendor.js');
 
 describe('kata.js', function () {
-  describe('Purchasing gum', function () {
+  describe('Inserting things', function () {
     it('should recognize when the shopper has inserted a quarter ', function(){
-      output = vendor.vend('Insert quarter');
+      output = vendor.insert('quarter');
       var lines = output.split('\n');
       lines[0].should.equal('Inserted quarter');
     });
 
-    it('should dispense gum when the shopper has inserted a quarter', function(){
-      vendor.vend('Insert Quarter').should.equal('Inserted quarter\nDispensing gum\nDone.');
+    it("should dispense nothing if it doesn't see any quarters", function(){
+      vendor.insert('sticky thing').should.equal('Inserted sticky thing\nDone.');
     });
 
-    it("should dispense nothing if it doesn't see any quarters", function(){
-      vendor.vend('Inserted sticky thing').should.equal('Inserted sticky thing\nDone.');
+  });
+  describe('Purchasing gum', function () {
+
+    it('should dispense gum when the shopper has inserted a quarter', function(){
+      vendor.insert('quarter').should.equal('Inserted quarter\nDispensing gum\nDone.');
     });
   });
 
