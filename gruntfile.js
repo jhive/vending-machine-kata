@@ -47,6 +47,7 @@ module.exports = function(grunt) {
   });
 
   require('load-grunt-tasks')(grunt);
+  grunt.registerTask('test', ['jshint', 'mochaTest']);
   grunt.registerTask('build', ['jade']);
-  grunt.registerTask('default', ['clear', 'jshint', 'mochaTest', 'watch']);
+  grunt.registerTask('default', ['clear', 'test', 'watch']);
 };
